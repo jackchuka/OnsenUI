@@ -484,3 +484,97 @@ list__item()
   padding-right: 8px;
   float: right;
 }
+
+
+var-material-list-item-min-height = 46px
+var-material-list-item-two-min-height = var-material-list-item-min-height/2
+var-material-list-item-padding = 16px
+
+/*! topdoc
+  name: Material-like List Single Line
+  use: List
+  markup:
+    <ul class="list list__single--material">
+      <li class="list__item">
+        <span class="list__item__line-height">Item</span>
+      </li>
+      <li class="list__item">
+        <span class="list__item__line-height">Item</span>
+      </li>
+    </ul>
+*/
+
+.list__single--material .list__item
+  min-height var-material-list-item-min-height
+  line-height var-material-list-item-min-height
+  padding 0 var-material-list-item-padding
+  
+
+/*! topdoc
+  name: Material-like List Two Line
+  use: List
+  markup:
+    <ul class="list list__two--material">
+      <li class="list__item">
+        <span class="primary">Two-line item</span>
+        <span class="secondary">Secondary text</span>
+      </li>
+      <li class="list__item">
+        <span class="primary">Two-line item</span>
+        <span class="secondary">Secondary text</span>
+      </li>
+    </ul>
+*/
+
+.list__two--material .list__item
+  min-height var-material-list-item-min-height
+  line-height var-material-list-item-two-min-height
+  padding var-material-list-item-padding
+
+.list__two--material .list__item .primary, .secondary
+  display block
+
+.list__two--material .list__item .secondary
+  font-size 14px
+  line-height 16px
+
+
+/*! topdoc
+  name: Material-like List No Border Ex
+  use: Material-like List Single Line
+  markup:
+    <ul class="list list__single--material list--noborder list__noborder--material">
+      <li class="list__item">
+        <span class="list__item__line-height">Item</span>
+      </li>
+      <li class="list__item">
+        <span class="list__item__line-height">Item</span>
+      </li>
+    </ul>
+*/
+
+/*! topdoc
+  name: Material-like List No Border Ex
+  use: Material-like List Two Line
+  markup:
+    <ul class="list list__two--material list--noborder list__noborder--material">
+      <li class="list__item">
+        <span class="primary">Two-line item</span>
+        <span class="secondary">Secondary text</span>
+      </li>
+      <li class="list__item">
+        <span class="primary">Two-line item</span>
+        <span class="secondary">Secondary text</span>
+      </li>
+    </ul>
+*/
+
+.list__noborder--material
+  border none
+  
+.list__noborder--material .list__item
+  border none
+  background-image none
+
+
+
