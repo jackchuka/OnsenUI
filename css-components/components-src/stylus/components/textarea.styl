@@ -23,6 +23,7 @@ var-textarea-color = var-input-text-color
 var-textarea-border = 1px solid var-input-border-color
 var-textarea-padding = 5px 5px 5px 5px
 var-textarea-box-shadow = none
+var-text-highlight-color = $highlight-color
 
 /*! topdoc
   name: Textarea
@@ -97,3 +98,111 @@ var-textarea-box-shadow = none
 .textarea--transparent::-moz-placeholder,
 .textarea--transparent:-ms-input-placeholder
   color var-input-placeholder-color
+
+
+
+/*! topdoc
+  name: Material-like Textarea
+  use: Textarea Transparent
+  markup:
+    <div class="textarea--material">
+      <textarea rows="3" placeholder="Textarea"></textarea>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+    </div>
+*/
+
+.textarea--material
+  position relative
+  margin 20px auto
+  reset-font()
+
+.textarea--material textarea
+  font-size var-text-input-font-size
+  padding 10px 10px 10px 5px
+  display block
+  width 100%
+  box-sizing border-box
+  background transparent
+  border none
+  border-bottom 1px solid #757575
+  resize none
+  
+.textarea--material textarea:focus
+  outline:none
+  
+.textarea--material textarea:disabled
+.textarea--material textarea:disabled ~ label
+  disabled()
+
+/* LABEL ======================================= */
+.textarea--material label
+  color #999 
+  font-size 18px
+  font-weight normal
+  position absolute
+  pointer-events none
+  left 5px
+  top 10px
+  transition all 0.2s ease
+
+/* active state */
+.textarea--material textarea:focus ~ label, input:valid ~ label
+  top -10px
+  font-size 14px
+  color var-text-highlight-color
+
+/* BOTTOM BARS ================================= */
+.textarea--material .bar
+  position relative
+  display block
+  
+.textarea--material .bar:before
+.bar:after
+  content ''
+  height 2px 
+  width 0
+  //bottom 1px 
+  position absolute
+  background var-text-highlight-color 
+  transition all 0.2s ease
+  
+.textarea--material .bar:before
+  left 50%
+.textarea--material .bar:after
+  right 50% 
+
+/* active state */
+.textarea--material textarea:focus ~ .bar:before, textarea:focus ~ .bar:after
+  width 50%
+
+/* HIGHLIGHTER ================================== */
+.textarea--material .highlight
+  position absolute
+  height 60% 
+  width 100px
+  top 25% 
+  left 0
+  pointer-events none
+  opacity 0.5
+
+/* active state */
+.textarea--material textarea:focus ~ .highlight
+  -webkit-animation inputHighlighter 0.3s ease
+  -moz-animation inputHighlighter 0.3s ease
+  animation inputHighlighter 0.3s ease
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from { background:var-text-highlight-color; }
+  to  { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:var-text-highlight-color; }
+  to  { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:var-text-highlight-color; }
+  to  { width:0; background:transparent; }
+}
+
